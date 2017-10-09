@@ -1,15 +1,15 @@
 {
-  "name":        "observ",
+  "name":        "obzerv",
   "description": "",
 
-  "main":        "dist/observ.js",
-  "module":      "dist/observ.module.js",
-  "jsnext:main": "dist/observ.module.js",
+  "main":        "dist/obzerv.js",
+  "module":      "dist/obzerv.module.js",
+  "jsnext:main": "dist/obzerv.module.js",
 
   "version": "0.0.1",
   "license": "MIT",
 
-  "repository": "callmecavs/observ",
+  "repository": "callmecavs/obzerv",
 
   "author": {
     "name":  "Michael Cavalea",
