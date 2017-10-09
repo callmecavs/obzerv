@@ -55,7 +55,7 @@
 
       // callback is passed the relevant node and a flag indicating if inview or not
       const callback = (node, inview) => {
-        console.log(`${ inview ? 'entered:' : 'exited:' } ${ node.getAttribute('data-id') }`)
+        node.classList[inview ? 'add' : 'remove']('match')
       }
 
       // partially apply the callback
