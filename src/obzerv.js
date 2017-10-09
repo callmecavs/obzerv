@@ -7,7 +7,6 @@ const obzerv = () => {
   const cache = {}
 
   // options:
-    // - node
     // - offset (relative to edges of viewport)
     // - callback (function passed the node)
   const create = options => {
@@ -29,7 +28,7 @@ const obzerv = () => {
       // create new observer
       observer = new window.IntersectionObserver(onChange, {
         root: null,             // relative to the viewport
-        rootMargin: '0px',      // TODO: calculate top/right/bottom/left px relative to options.offset and window.innerWidth/Height
+        rootMargin: '0px',      // FIXME: calculate top/right/bottom/left px relative to options.offset and window.innerWidth/Height
         threshold: .01          // any amount visible
       })
 
