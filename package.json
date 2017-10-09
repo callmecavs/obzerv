@@ -1,28 +1,37 @@
 {
-  "name": "obzerv.js",
+  "name":        "observ",
   "description": "",
-  "main": "dist/obzerv.js",
-  "module": "dist/obzerv.module.js",
-  "jsnext:main": "dist/obzerv.module.js",
+
+  "main":        "dist/observ.js",
+  "module":      "dist/observ.module.js",
+  "jsnext:main": "dist/observ.module.js",
+
   "version": "0.0.1",
-  "license": "",
-  "repository": "",
+  "license": "MIT",
+
+  "repository": "callmecavs/observ",
+
   "author": {
-    "name": "",
-    "email": "",
-    "url": ""
+    "name":  "Michael Cavalea",
+    "email": "callmecavs@gmail.com",
+    "url":   "http://callmecavs.com/"
   },
+
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w -m inline",
-    "lint": "eslint src",
-    "prebuild": "rm -rf dist",
+    "build":      "rollup -c",
+    "dev":        "rollup -c -w -m inline",
+    "lint":       "eslint src",
+    "prebuild":   "rm -rf dist",
     "prepublish": "npm run test",
-    "pretest": "npm run build",
-    "server": "python -m SimpleHTTPServer 3000",
-    "test": "npm run lint && mocha"
+    "pretest":    "npm run build",
+    "server":     "python -m SimpleHTTPServer 3000",
+    "test":       "npm run lint && mocha"
   },
-  "keywords": [],
+
+  "keywords": [
+
+  ],
+
   "devDependencies": {
     "babel-eslint": "^7.1.1",
     "babel-preset-env": "^1.2.2",
