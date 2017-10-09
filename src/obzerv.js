@@ -10,7 +10,7 @@ const obzerv = () => {
     // - node
     // - offset (relative to edges of viewport)
     // - callback (function passed the node)
-  const add = callback => options => {
+  const create = options => {
     let observer
 
     // check for existing observer by offset
@@ -19,12 +19,11 @@ const obzerv = () => {
     if (cached) {
       // add to existing observer
       observer = cached
-      observer.observe(options.node)
     } else {
       // define change handler
       // passes the changed node and current instersecting status to the callback function
       const onChange = entries => {
-        entries.forEach(entry => callback(entry.target, entry.isIntersecting))
+        entries.forEach(entry => options.callback(entry.target, entry.isIntersecting))
       }
 
       // create new observer
@@ -34,17 +33,19 @@ const obzerv = () => {
         threshold: .01          // any amount visible
       })
 
-      // observe the element
-      observer.observe(options.node)
-
       // cache the observer
       cache[options.offset] = observer
     }
+
+    // return a method that adds a node to the observer
+    return {
+      track: node => observer.observe(node)
+    }
   }
 
-  return {
-    add
-  }
+  return { create }
 }
 
-export default obzerv
+const singleton = obzerv()
+
+export default singleton
