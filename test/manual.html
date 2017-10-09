@@ -32,7 +32,7 @@
         margin-bottom: 75vh;
       }
 
-        .box.match {
+        .box.is-inview {
           opacity: 1;
         }
 
@@ -53,15 +53,15 @@
 
       // FIXME: pass callback a function that untracks the node (for "only fire once" situations)
       // callback is passed the relevant node and a flag indicating if inview or not
-      const callback = (node, inview) => node.classList[inview ? 'add' : 'remove']('match')
+      const callback = (node, inview) => node.classList[inview ? 'add' : 'remove']('is-inview')
 
-      // partially apply the callback and offset
+      // pass an object with callback and offset to create an observer
       const inviewObserver = Obzerv.create({
         callback,
         offset: .5
       })
 
-      // add nodes to track to observer
+      // add the nodes to track to the observer
       Array
         .from(document.querySelectorAll('.box'))
         .forEach(box => inviewObserver.track(box))
