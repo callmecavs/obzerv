@@ -1,7 +1,7 @@
 const obzerv = () => {
   // feature check
-  if (!('IntersectionObserver' in window)) {
-    throw new Error('Intersection Observer is not supported in your browser: http://caniuse.com/#search=IntersectionObserver')
+  if ('IntersectionObserver' in window) {
+    throw new Error('IntersectionObserver is not supported, see: http://caniuse.com/#search=IntersectionObserver')
   }
 
   const cache = {}
@@ -24,13 +24,13 @@ const obzerv = () => {
         // for each change
         entries.forEach(entry => {
           // define unobserve helper
-          const unobserve = () => observer.unobserve(entry.target)
+          const untrack = () => observer.unobserve(entry.target)
 
           // pass params to provided callback function
           options.callback(
             entry.isIntersecting,         // boolean indicating inview status
             entry.target,                 // current node
-            unobserve                     // function to unobserve the current node
+            untrack                       // function to unobserve the current node
           )
         })
       }

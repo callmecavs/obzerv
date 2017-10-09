@@ -52,14 +52,14 @@
       console.log(Obzerv)
 
       // callback is passed:
-        // the node
         // a flag indicating if the node is in viewport or not
+        // the node
         // a function that removes the node from the observer
-      const callback = (inview, node, unobserve) => {
+      const callback = (inview, node, untrack) => {
         // add the inview class when inview the first time
         if (inview) {
           node.classList.add('is-inview')
-          unobserve()
+          untrack()
         } else {
           node.classList.remove('is-inview')
         }
