@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        padding-top: 75vh;
+        padding-bottom: 75vh;
+      }
+
+      .box {
+        opacity: .5;
+
+        transition: opacity .5s ease;
+
+        width: 100px;
+        height: 100px;
+        margin-right: auto;
+        margin-left: auto;
+        background-color: black;
+
+        margin-bottom: 75vh;
+      }
+
+        .box.match {
+          opacity: 1;
+        }
+
+        .box:last-of-type {
+          margin-bottom: 0;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="box box-1"></div>
+    <div class="box box-2"></div>
+    <div class="box box-3"></div>
+
+    <script src="../dist/obzerv.js"></script>
+    <script>
+      console.log('Module assigned to window.Obzerv. Logged below:')
+      console.log(Obzerv)
+    </script>
+  </body>
+</html>
