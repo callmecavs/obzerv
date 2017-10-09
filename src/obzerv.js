@@ -20,9 +20,13 @@ const obzerv = () => {
       observer = cached
     } else {
       // define change handler
-      // passes the changed node and current instersecting status to the callback function
-      const onChange = entries => {
-        entries.forEach(entry => options.callback(entry.target, entry.isIntersecting))
+      const onChange = (entries, observer) => {
+        // for each change, pass relevant info to provided callback function
+        entries.forEach(entry => options.callback(
+          entry.target,                                   // current node
+          entry.isIntersecting,                           // boolean indicating inview status
+          () => observer.unobserve(entry.target)          // function to unobserve the current node
+        ))
       }
 
       // create new observer
