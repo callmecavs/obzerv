@@ -56,7 +56,7 @@
       const callback = (node, inview) => node.classList[inview ? 'add' : 'remove']('match')
 
       // partially apply the callback and offset
-      const inview = Obzerv.create({
+      const inviewObserver = Obzerv.create({
         callback,
         offset: .5
       })
@@ -64,7 +64,7 @@
       // add nodes to track to observer
       Array
         .from(document.querySelectorAll('.box'))
-        .forEach(box => inview.track(box))
+        .forEach(box => inviewObserver.track(box))
     </script>
   </body>
 </html>
