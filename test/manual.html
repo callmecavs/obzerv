@@ -51,21 +51,20 @@
       console.log('Module assigned to window.Obzerv. Logged below:')
       console.log(Obzerv)
 
-      const instance = Obzerv()
-
+      // FIXME: pass callback a function that untracks the node (for "only fire once" situations)
       // callback is passed the relevant node and a flag indicating if inview or not
       const callback = (node, inview) => node.classList[inview ? 'add' : 'remove']('match')
 
-      // partially apply the callback
-      const inview = instance.add(callback)
+      // partially apply the callback and offset
+      const inview = Obzerv.create({
+        callback,
+        offset: .5
+      })
 
-      // FIXME: options (callback & offset) should be partially applied before nodes
+      // add nodes to track to observer
       Array
         .from(document.querySelectorAll('.box'))
-        .forEach(box => inview({
-          node: box,
-          offset: .5
-        }))
+        .forEach(box => inview.track(box))
     </script>
   </body>
 </html>
