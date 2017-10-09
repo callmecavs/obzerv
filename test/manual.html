@@ -54,9 +54,7 @@
       const instance = Obzerv()
 
       // callback is passed the relevant node and a flag indicating if inview or not
-      const callback = (node, inview) => {
-        node.classList[inview ? 'add' : 'remove']('match')
-      }
+      const callback = (node, inview) => node.classList[inview ? 'add' : 'remove']('match')
 
       // partially apply the callback
       const inview = instance.add(callback)
