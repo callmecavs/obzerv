@@ -1,0 +1,40 @@
+{
+  "name": "obzerv.js",
+  "description": "",
+  "main": "dist/obzerv.js",
+  "module": "dist/obzerv.module.js",
+  "jsnext:main": "dist/obzerv.module.js",
+  "version": "0.0.1",
+  "license": "",
+  "repository": "",
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w -m inline",
+    "lint": "eslint src",
+    "prebuild": "rm -rf dist",
+    "prepublish": "npm run test",
+    "pretest": "npm run build",
+    "server": "python -m SimpleHTTPServer 3000",
+    "test": "npm run lint && mocha"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "babel-eslint": "^7.1.1",
+    "babel-preset-env": "^1.2.2",
+    "chai": "^3.5.0",
+    "eslint": "^3.13.0",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "mocha": "^3.2.0",
+    "rollup": "^0.41.1",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-watch": "^3.2.2"
+  }
+}
