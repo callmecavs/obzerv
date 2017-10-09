@@ -42,14 +42,32 @@
     </style>
   </head>
   <body>
-    <div class="box box-1"></div>
-    <div class="box box-2"></div>
-    <div class="box box-3"></div>
+    <div class="box box-1" data-id="1"></div>
+    <div class="box box-2" data-id="2"></div>
+    <div class="box box-3" data-id="3"></div>
 
     <script src="../dist/obzerv.js"></script>
     <script>
       console.log('Module assigned to window.Obzerv. Logged below:')
       console.log(Obzerv)
+
+      const instance = Obzerv()
+
+      // callback is passed the relevant node and a flag indicating if inview or not
+      const callback = (node, inview) => {
+        console.log(`${ inview ? 'entered:' : 'exited:' } ${ node.getAttribute('data-id') }`)
+      }
+
+      // partially apply the callback
+      const inview = instance.add(callback)
+
+      // FIXME: options (callback & offset) should be partially applied before nodes
+      Array
+        .from(document.querySelectorAll('.box'))
+        .forEach(box => inview({
+          node: box,
+          offset: .5
+        }))
     </script>
   </body>
 </html>
