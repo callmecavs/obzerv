@@ -33,7 +33,7 @@ const obzerv = () => {
       observer = new window.IntersectionObserver(onChange, {
         root: null,             // relative to the viewport
         rootMargin: '0px',      // FIXME: calculate top/right/bottom/left px relative to options.offset and window.innerWidth/Height
-        threshold: .01          // any amount visible
+        threshold: 0.01         // any amount visible
       })
 
       // cache the observer
