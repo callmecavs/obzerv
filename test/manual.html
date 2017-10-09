@@ -55,7 +55,7 @@
         // the node
         // a flag indicating if the node is in viewport or not
         // a function that removes the node from the observer
-      const callback = (node, inview, unobserve) => {
+      const callback = (inview, node, unobserve) => {
         // add the inview class when inview the first time
         if (inview) {
           node.classList.add('is-inview')
