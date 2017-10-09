@@ -21,12 +21,18 @@ const obzerv = () => {
     } else {
       // define change handler
       const onChange = (entries, observer) => {
-        // for each change, pass relevant info to provided callback function
-        entries.forEach(entry => options.callback(
-          entry.target,                                   // current node
-          entry.isIntersecting,                           // boolean indicating inview status
-          () => observer.unobserve(entry.target)          // function to unobserve the current node
-        ))
+        // for each change
+        entries.forEach(entry => {
+          // define unobserve helper
+          const unobserve = () => observer.unobserve(entry.target)
+
+          // pass params to provided callback function
+          options.callback(
+            entry.isIntersecting,         // boolean indicating inview status
+            entry.target,                 // current node
+            unobserve                     // function to unobserve the current node
+          )
+        })
       }
 
       // create new observer
