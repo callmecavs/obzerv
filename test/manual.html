@@ -51,9 +51,19 @@
       console.log('Module assigned to window.Obzerv. Logged below:')
       console.log(Obzerv)
 
-      // FIXME: pass callback a function that untracks the node (for "only fire once" situations)
-      // callback is passed the relevant node and a flag indicating if inview or not
-      const callback = (node, inview) => node.classList[inview ? 'add' : 'remove']('is-inview')
+      // callback is passed:
+        // the node
+        // a flag indicating if the node is in viewport or not
+        // a function that removes the node from the observer
+      const callback = (node, inview, unobserve) => {
+        // add the inview class when inview the first time
+        if (inview) {
+          node.classList.add('is-inview')
+          unobserve()
+        } else {
+          node.classList.remove('is-inview')
+        }
+      }
 
       // pass an object with callback and offset to create an observer
       const inviewObserver = Obzerv.create({
