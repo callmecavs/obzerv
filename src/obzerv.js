@@ -1,6 +1,6 @@
 const obzerv = () => {
   // feature check
-  if ('IntersectionObserver' in window) {
+  if (!('IntersectionObserver' in window)) {
     throw new Error('IntersectionObserver is not supported, see: http://caniuse.com/#search=IntersectionObserver')
   }
 
