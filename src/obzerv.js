@@ -10,7 +10,9 @@ const obzerv = () => {
     // - offset (relative to edges of viewport)
     // - callback (function)
   const create = options => {
+    let change
     let observer
+    let untrack
 
     // check for existing observer by offset
     const cached = cache[options.offset]
@@ -20,11 +22,11 @@ const obzerv = () => {
       observer = cached
     } else {
       // define change handler
-      const onChange = (entries, observer) => {
+      change = (entries, observer) => {
         // for each change
         entries.forEach(entry => {
           // define untrack helper
-          const untrack = () => observer.unobserve(entry.target)
+          untrack = () => observer.unobserve(entry.target)
 
           // pass params to provided callback function
           options.callback(
@@ -36,7 +38,7 @@ const obzerv = () => {
       }
 
       // create new observer using defined handler
-      observer = new window.IntersectionObserver(onChange, {
+      observer = new window.IntersectionObserver(change, {
         root: null,             // relative to the viewport
         rootMargin: '0px',      // FIXME: calculate top/right/bottom/left px relative to options.offset and window.innerWidth/Height
         threshold: 0.01         // any amount visible
