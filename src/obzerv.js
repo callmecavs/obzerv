@@ -4,49 +4,31 @@ const obzerv = () => {
     throw new Error('IntersectionObserver is not supported, see: http://caniuse.com/#search=IntersectionObserver')
   }
 
-  const cache = {}
-
   // options:
     // - offset (relative to edges of viewport)
     // - callback (function)
   const create = options => {
-    let change
-    let observer
-    let untrack
+    // define change handler
+    const change = (entries, observer) => {
+      // for each change
+      entries.forEach(entry => {
+        // define untrack helper
+        const untrack = () => observer.unobserve(entry.target)
 
-    // check for existing observer by offset
-    const cached = cache[options.offset]
-
-    if (cached) {
-      // add to existing observer
-      observer = cached
-    } else {
-      // define change handler
-      change = (entries, observer) => {
-        // for each change
-        entries.forEach(entry => {
-          // define untrack helper
-          untrack = () => observer.unobserve(entry.target)
-
-          // pass params to provided callback function
-          options.callback(
-            entry.isIntersecting,         // boolean indicating inview status
-            entry.target,                 // current node
-            untrack                       // function to unobserve the current node
-          )
-        })
-      }
-
-      // create new observer using defined handler
-      observer = new window.IntersectionObserver(change, {
-        root: null,             // relative to the viewport
-        rootMargin: '0px',      // FIXME: calculate top/right/bottom/left px relative to options.offset and window.innerWidth/Height
-        threshold: 0.01         // any amount visible
+        // pass params to provided callback function
+        options.callback(
+          entry.isIntersecting,         // boolean indicating inview status
+          entry.target,                 // current node
+          untrack                       // function to unobserve the current node
+        )
       })
-
-      // cache the observer
-      cache[options.offset] = observer
     }
+
+    const observer = new window.IntersectionObserver(change, {
+      root: null,             // relative to the viewport
+      rootMargin: '0px',      // FIXME: calculate top/right/bottom/left px relative to options.offset and window.innerWidth/Height
+      threshold: 0.01         // any amount visible
+    })
 
     // return a method that adds a node to the observer
     return {
