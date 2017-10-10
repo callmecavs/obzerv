@@ -26,11 +26,11 @@ const obzerv = () => {
       })
     }
 
-    // create observer instance using change handler
+    // create observer instance
     const observer = new window.IntersectionObserver(change, {
-      root: null,             // relative to the viewport
-      rootMargin: '0px',      // FIXME: calculate top/right/bottom/left px relative to options.offset and window.innerWidth/Height
-      threshold: 0.01         // any amount visible
+      root: null,                                        // relative to the viewport
+      rootMargin: `-${ options.offset || 0 }%`,          // apply offsets as percentage
+      threshold: 0.01                                    // any amount visible
     })
 
     // return a method that adds a node to the observer
