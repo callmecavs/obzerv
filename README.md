@@ -36,7 +36,7 @@ const callback = (node, inview, untrack) => {
 // create an observer instance
 const observer = obzerv.create({
   callback,
-  offset: .5
+  offset: 25
 })
 
 // add all .box elements to the observer
