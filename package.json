@@ -1,6 +1,6 @@
 {
   "name":        "obzerv",
-  "description": "",
+  "description": "A convenient wrapper around IntersectionObserver for tracking element position relative to the viewport.",
 
   "main":        "dist/obzerv.js",
   "module":      "dist/obzerv.module.js",
