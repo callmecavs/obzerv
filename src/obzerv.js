@@ -17,8 +17,8 @@ const obzerv = () => {
 
         // pass params to provided callback function
         options.callback(
-          entry.isIntersecting,         // boolean indicating inview status
           entry.target,                 // current node
+          entry.isIntersecting,         // boolean indicating inview status
           untrack                       // function to unobserve the current node
         )
       })

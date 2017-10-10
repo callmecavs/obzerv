@@ -51,11 +51,7 @@
       console.log('Module assigned to window.Obzerv. Logged below:')
       console.log(Obzerv)
 
-      // callback is passed:
-        // a flag indicating if the node is in viewport or not
-        // the node
-        // a function that removes the node from the observer
-      const callback = (inview, node, untrack) => {
+      const callback = (node, inview, untrack) => {
         // add the inview class when inview the first time
         if (inview) {
           node.classList.add('is-inview')
@@ -65,13 +61,11 @@
         }
       }
 
-      // pass an object with callback and offset to create an observer
       const inviewObserver = Obzerv.create({
         callback,
         offset: .5
       })
 
-      // add the nodes to track to the observer
       Array
         .from(document.querySelectorAll('.box'))
         .forEach(box => inviewObserver.track(box))
