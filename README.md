@@ -34,7 +34,7 @@ const callback = (node, inview, untrack) => {
 }
 
 // create an observer instance
-const observer = Obzerv.create({
+const observer = obzerv.create({
   callback,
   offset: .5
 })
