@@ -24,6 +24,7 @@ const obzerv = () => {
       })
     }
 
+    // create observer instance using change handler
     const observer = new window.IntersectionObserver(change, {
       root: null,             // relative to the viewport
       rootMargin: '0px',      // FIXME: calculate top/right/bottom/left px relative to options.offset and window.innerWidth/Height
