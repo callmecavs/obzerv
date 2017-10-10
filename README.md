@@ -40,7 +40,7 @@ const observer = Obzerv.create({
 })
 ```
 
-Returns a `track` function used to add nodes to the observer.
+Returns an observer instance with a `track` function used to add nodes to the observer.
 
 Elements with the same offset are observed using the same observer - as such, only unique `callback` and `offset` combinations should be created. A single instance of an IntersectionObserver is created in such cases, making it more performant to monitor all elements.
 
