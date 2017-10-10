@@ -1,13 +1,15 @@
 const obzerv = () => {
-  // feature check
+  // feature detection
   if (!('IntersectionObserver' in window)) {
     throw new Error('IntersectionObserver is not supported, see: http://caniuse.com/#search=IntersectionObserver')
   }
 
-  // options:
-    // - offset (relative to edges of viewport)
-    // - callback (function)
   const create = options => {
+    // exit early if no callback
+    if (!options.callback) {
+      return
+    }
+
     // define change handler
     const change = (entries, observer) => {
       // for each change
