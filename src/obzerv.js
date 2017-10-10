@@ -29,7 +29,7 @@ const obzerv = () => {
     // create observer instance
     const observer = new window.IntersectionObserver(change, {
       root: null,                                        // relative to the viewport
-      rootMargin: `-${options.offset || 0}%`,          // apply offsets as percentage
+      rootMargin: `-${options.offset || 0}%`,            // apply offsets as percentage
       threshold: 0.01                                    // any amount visible
     })
 
